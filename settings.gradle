@@ -5,6 +5,22 @@ pluginManagement {
             name = 'Fabric'
             url = 'https://maven.fabricmc.net/'
         }
+        maven {
+            name = 'Forge'
+            url = 'https://files.minecraftforge.net/maven/'
+        }
         gradlePluginPortal()
+        maven {
+            name = 'Jitpack'
+            url = 'https://jitpack.io'
+        }
+    }
+
+    resolutionStrategy {
+        eachPlugin {
+            if (requested.id.id == "fabric-loom" && requested.version?.endsWith("-SNAPSHOT") != true) {
+                useModule("com.github.Juuxel:fabric-loom:${requested.version}")
+            }
+        }
     }
 }
