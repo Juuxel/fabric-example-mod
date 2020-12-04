@@ -1,5 +1,5 @@
 plugins {
-	id 'fabric-loom' version '2d88e849'
+	id 'fabric-loom' version '876cb01e'
 	id 'maven-publish'
 }
 
@@ -12,18 +12,6 @@ group = project.maven_group
 
 loom {
 	mixinConfig = "examplemod.mixins.json"
-}
-
-repositories {
-	// For Yarn; there's a method name conflict that I've had to fix
-	ivy {
-		url file('libs').toURI().toURL()
-		layout 'maven'
-
-		metadataSources {
-			artifact()
-		}
-	}
 }
 
 dependencies {
