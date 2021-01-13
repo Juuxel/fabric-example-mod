@@ -1,5 +1,5 @@
 plugins {
-	id 'fabric-loom' version '876cb01e'
+	id 'fabric-loom' version 'f5b8db1f'
 	id 'maven-publish'
 }
 
@@ -27,13 +27,8 @@ dependencies {
 processResources {
 	inputs.property "version", project.version
 
-	from(sourceSets.main.resources.srcDirs) {
-		include "fabric.mod.json"
-		expand "version": project.version
-	}
-
-	from(sourceSets.main.resources.srcDirs) {
-		exclude "fabric.mod.json"
+	filesMatching('META-INF/mods.toml') {
+		expand 'version': project.version
 	}
 }
 
